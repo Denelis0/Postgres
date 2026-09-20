@@ -34,3 +34,9 @@ FROM pg_statio_user_tables
 WHERE (heap_blks_read + idx_blks_read) > 0
 ORDER BY (heap_blks_read + idx_blks_read) DESC
 LIMIT 10;
+
+
+Количество грязных страниц в буферном кэше:
+SELECT count(*) AS dirty_buffers
+FROM pg_buffercache
+WHERE isdirty = true;
